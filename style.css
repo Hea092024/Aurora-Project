@@ -1,0 +1,216 @@
+:root {
+  --greyish: #8080806d;
+  --green: #28a745;
+  --darkgreen: #218838;
+  --whitesmoke: #f5f5f5;
+  --blue: #007bff;
+  --darkblue: #0056b3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: var(--greyish);
+}
+
+body {
+  background: url(./assets/pink-northern-lights.jpg) center/cover no-repeat
+    fixed;
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* #logo {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+} */
+
+.search-box {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.search-box input,
+.search-box button,
+.right-button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-box input {
+  border: 1px solid #ccc;
+}
+
+.search-box button {
+  background-color: var(--blue);
+  border: none;
+  color: var(--whitesmoke);
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background-color: var(--darkblue);
+}
+
+.right-button {
+  background-color: var(--green);
+  border: none;
+  color: var(--whitesmoke);
+  cursor: pointer;
+}
+
+.right-button:hover {
+  background-color: var(--darkgreen);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: var(--whitesmoke);
+}
+
+p {
+  font-size: 1.2em;
+  color: var(--whitesmoke);
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.info-container {
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 15px;
+  text-align: center;
+}
+
+.info-container img {
+  width: 80%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+#footer {
+  height: 10rem;
+  color: var(--whitesmoke);
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: auto;
+}
+
+#footer a {
+  color: var(--whitesmoke);
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+#footer a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 15px 10px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-box {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .right-button {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  #footer {
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+  p {
+    font-size: 1.1em;
+  }
+
+  section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 12px 8px;
+  }
+  .search-box input,
+  .search-box button,
+  .right-button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .search-box input,
+  .search-box button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .right-button {
+    width: 50%;
+  }
+
+  #footer {
+    font-size: 0.85rem;
+  }
+
+  h1 {
+    font-size: 1.8em;
+    color: var(--whitesmoke);
+  }
+  p {
+    font-size: 1em;
+  }
+
+  section {
+    grid-template-columns: 1fr;
+  }
+}
