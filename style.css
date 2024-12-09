@@ -16,7 +16,7 @@
 
 html,
 body {
-  height: 100%;
+  /* height: 100%; */
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -48,8 +48,7 @@ body {
 }
 
 .search-box input,
-.search-box button,
-.right-button {
+.search-box button {
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 14px;
@@ -68,17 +67,6 @@ body {
 
 .search-box button:hover {
   background-color: var(--darkblue);
-}
-
-.right-button {
-  background-color: var(--green);
-  border: none;
-  color: var(--whitesmoke);
-  cursor: pointer;
-}
-
-.right-button:hover {
-  background-color: var(--darkgreen);
 }
 
 .main-content {
@@ -111,7 +99,7 @@ section {
 }
 
 .info-section {
-  margin: 50px auto;
+  margin: 40px auto;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   padding: 15px;
