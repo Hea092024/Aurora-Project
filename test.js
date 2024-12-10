@@ -1,67 +1,57 @@
-const locationURL = "https://api.auroras.live/v1/?type=locations";
-// // let locationList = document.getElementById("location-list");
-// // console.log(locationURL);
 
-// async function fetchLocationList() {
-//   try {
-//     const resLocation = await fetch(locationURL);
-//     if (!resLocation.ok) {
-//       throw new Error("Could not fetch resource");
-//     }
-//     const locationList = await resLocation.json();
-//     console.log(locationList);
-//     console.log(locationList[0].country);
-//     return locationList;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+async function fetchLocationData() {
+    try {
+        const fetchLocationURL = await fetch("https://api.auroras.live/v1/?type=locations");
+        if(!fetchLocationURL.ok){
+            throw new Error("could not fetch resource")
+        }
+        const resLocation = await fetchLocationURL.json()
+        console.log(resLocation);
+        return resLocation
 
-// const testlist = await fetchLocationList();
+    } catch (error) {
+        throw error(error)
+    }   
+};
+const locationData = await fetchLocationData();
 
-// console.log(testlist);
+function getLength(obj) {   
+    var i = 0;
+    for (var x in obj){
+        if(obj.hasOwnProperty(x)){
+            i++;
 
-// for (let i = 0; i < testlist.length; i++) {
-//   console.log(i);
-//   console.log(testlist[i].country);
-// }
-
-// const locationURL = await fetch("https://api.auroras.live/v1/?type=locations");
-// const resLocation = await locationURL.json();
-// console.log(resLocation);
-
-// const locationList = document.getElementById("location-list");
-
-// async function createLocationList() {
-//   let countryList = document.createElement("option");
-// }
-
-// for (let i = 0; i < resLocation.length; i++) {
-//   console.log(i);
-//   console.log(resLocation[i].country);
-// }
-
-// createLocationList();
-
-
-async function fetchLocationURL() {
-  try {
-    const resLocationURL = await fetch(locationURL);
-    if (!resLocationURL.ok) {
-      throw new Error("Could not fetch resource");
+        }
     }
-    const locationList = await resLocationURL.json();
-    return locationList;
-  } catch (error) {
-    console.error(error);
-  }
+    return i;
 }
-const testlist = await fetchLocationURL();
+getLength(locationData);
 
-console.log(testlist);
+const selectLocationList = document.getElementById("location-list");
 
-for (let i = 0; i < testlist.length; i++) {
-   console.log(testlist[i].country);
-   
+function createLocationList() {
+    // let locationCountry = document.createElement("option")
+
+    let iLength = getLength(locationData)
+     
+    for (let i = 0; i < iLength-1; i++) {
+            let locationCountry = document.createElement("option")
+            locationCountry.value = locationData[i].id;
+            locationCountry.text = locationData[i].id
+
+
+
+
+            selectLocationList.appendChild(locationCountry);
+
+
+
+
+            console.log(locationCountry);
+         
+            
+            
+    }
     
 }
+createLocationList();
