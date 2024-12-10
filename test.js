@@ -15,6 +15,14 @@ async function fetchLocationData() {
 };
 const locationData = await fetchLocationData();
 
+
+
+
+
+
+
+
+
 function getLength(obj) {   
     var i = 0;
     for (var x in obj){
@@ -30,28 +38,22 @@ getLength(locationData);
 const selectLocationList = document.getElementById("location-list");
 
 function createLocationList() {
-    // let locationCountry = document.createElement("option")
-
     let iLength = getLength(locationData)
-     
-    for (let i = 0; i < iLength-1; i++) {
+      for (let i = 0; i < iLength-1; i++) {
             let locationCountry = document.createElement("option")
-            locationCountry.value = locationData[i].id;
-            locationCountry.text = locationData[i].id
+            let _id = locationData[i].name;
+            let _country = locationData[i].country;
 
+            //denne koden fjerner "spaces", vet den ser litt rar ut :)
+            _id = _id.replace(/\s/g, '');
+            _country = _country.replace(/\s/g, '');
 
-
-
+            locationCountry.text = _id + ", " + _country
             selectLocationList.appendChild(locationCountry);
 
-
-
-
             console.log(locationCountry);
-         
-            
-            
-    }
-    
+    }   
 }
 createLocationList();
+
+
