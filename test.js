@@ -15,14 +15,6 @@ async function fetchLocationData() {
 };
 const locationData = await fetchLocationData();
 
-
-
-
-
-
-
-
-
 function getLength(obj) {   
     var i = 0;
     for (var x in obj){
