@@ -1,51 +1,49 @@
-
 async function fetchLocationData() {
     try {
         const fetchLocationURL = await fetch("https://api.auroras.live/v1/?type=locations");
         if(!fetchLocationURL.ok){
             throw new Error("could not fetch resource")
         }
-        const resLocation = await fetchLocationURL.json()
-        console.log(resLocation);
-        return resLocation
-
+        const res = await fetchLocationURL.json()
+        console.log(res);
+        return res
     } catch (error) {
-        throw error(error)
+        throw Error(error)
     }   
 };
 const locationData = await fetchLocationData();
 
-function getLength(obj) {   
-    var i = 0;
-    for (var x in obj){
-        if(obj.hasOwnProperty(x)){
-            i++;
 
-        }
-    }
-    return i;
-}
-getLength(locationData);
+
 
 const selectLocationList = document.getElementById("location-list");
 
 function createLocationList() {
-    let iLength = getLength(locationData)
-      for (let i = 0; i < iLength-1; i++) {
-            let locationCountry = document.createElement("option")
-            let _id = locationData[i].name;
-            let _country = locationData[i].country;
+      for (let i = 0; i < Object.keys(locationData).length -1; i++) {
+            const option = document.createElement("option")
+            option.textContent = `${locationData[i].description}`
 
-            //denne koden fjerner "spaces", vet den ser litt rar ut :)
-            _id = _id.replace(/\s/g, '');
-            _country = _country.replace(/\s/g, '');
-
-            locationCountry.text = _id + ", " + _country
-            selectLocationList.appendChild(locationCountry);
-
-            console.log(locationCountry);
-    }   
-}
+            option.value = `&lat=${locationData[i].lat}&long=${locationData[i].long}`;
+            selectLocationList.appendChild(option);
+}}
 createLocationList();
 
 
+
+const menu = document.getElementById("location-list")
+const btn = document.getElementById("test")
+
+btn.addEventListener("click", ()=>{
+    console.log(menu.value)
+})
+
+
+
+console.log(`http://api.auroras.live/v1/?type=all${menu.value}&forecast=false&threeday=false`);
+
+
+
+async function createUrlFromOption() {
+    
+
+}
