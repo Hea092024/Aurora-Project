@@ -37,7 +37,9 @@ const btn = document.getElementById("test")
 
 async function fetchKpFromOption() {
     try { 
-    const kpFromOption = await fetch(`https://api.auroras.live/v1/?type=all${menu.value}&forecast=false&threeday=true`)
+    console.log(menu.value)
+    // const kpFromOption = await fetch(`https://api.auroras.live/v1/?type=ace&data=kp${menu.value}&threeday=true`)
+    const kpFromOption = await fetch(`https://api.auroras.live/v1/?type=ace&data=threeday&${menu.value}`)
     if(!kpFromOption.ok){
         throw new Error("could not fetch resource")
     }
@@ -47,23 +49,42 @@ async function fetchKpFromOption() {
         throw Error(error)
     } 
 }
-const kpFromOptionData = await fetchKpFromOption();
+
+
 
 const kp = document.getElementById("kp-verdier-24")
 
-function createKpList(){
+function createKpList(kpFromOptionData, latValue){
     for (let i = 0; i < 8; i++) {
         const kpVerdi24 = document.createElement("li")
-        kpVerdi24.textContent = `${new Date().toLocaleDateString() + " Kp value is: " +kpFromOptionData.threeday.values[0][i].value}`
-        kp.appendChild(kpVerdi24)
+        const likelyAurora = IsAuroraLikely(kpFromOptionData.values[0][i].value, latValue);
+        kpVerdi24.textContent = `${new Date().toLocaleDateString() + " Kp value is: " +kpFromOptionData.values[0][i].value}: ${likelyAurora}`
+        kp.appendChild(kpVerdi24);
          
     }
 }
 
+const kpValueToMaxLatGradeArray = [
+  66, 64.5, 62.4, 60.4, 58.3, 56.3, 54.2, 52.2, 50.1, 48,
+];
 
-btn.addEventListener("click", ()=>{
+function IsAuroraLikely(kpValue, latitude) {
+  const roundedkpValue = Math.round(kpValue);
+  const maxLatitudeForKpValue = kpValueToMaxLatGradeArray[roundedkpValue];
+  if (latitude > maxLatitudeForKpValue) {
+    return "Likely aurora";
+  } else return "Aurora unlikely";
+}
+
+
+
+
+btn.addEventListener("click", async()=>{
+    const kpFromOptionData = await fetchKpFromOption();
+    const latValue = Number.parseFloat(menu.value.split("&")[1].split("=")[1]);
+    console.log(latValue);
     kp.replaceChildren()
-    createKpList();
+    createKpList(kpFromOptionData, latValue);
 })
 
 
