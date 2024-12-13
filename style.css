@@ -1,260 +1,158 @@
-:root {
-  --greyish: #8080806d;
-  --green: #28a745;
-  --darkgreen: #218838;
-  --whitesmoke: #f5f5f5;
-  --blue: #007bff;
-  --darkblue: #0056b3;
-  --lightgrey: #dcdcdc;
-}
-
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-}
-
-html,
-body {
-  /* height: 100%; */
   margin: 0;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: var(--greyish);
 }
 
 body {
-  background: url(./assets/pink-northern-lights.jpg) center/cover no-repeat
-    fixed;
-}
-
-.header-content {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 0 20px;
-}
-
-#logo {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-}
-
-.search-box {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.search-box input,
-.search-box button {
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.search-box input {
-  border: 1px solid #ccc;
-}
-
-.search-box button {
-  background-color: var(--blue);
-  border: none;
-  color: var(--whitesmoke);
-  cursor: pointer;
-}
-
-.search-box button:hover {
-  background-color: var(--darkblue);
-}
-
-.main-content {
+  font-family: "Open Sans", sans-serif;
+  background-color: #f4f6f9;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   align-items: center;
-  justify-content: center;
-  max-width: 1000px;
-  margin: 0 auto;
   padding: 20px;
+  background-image: url(./assets/Aurora.jpg);
+  background-size: cover;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  padding: 25px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 2rem;
+  color: #333;
   margin-bottom: 20px;
-  color: var(--whitesmoke);
 }
 
-p {
-  font-size: 1.2em;
-  color: var(--whitesmoke);
+select {
+  padding: 12px;
+  font-size: 1rem;
+  margin: 20px 0;
+  max-width: 350px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease;
 }
 
-section {
-  padding: 20px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  box-sizing: border-box;
+select:focus {
+  outline: none;
+  border-color: #4caf50;
 }
 
-.info-section {
-  margin: 40px auto;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  width: 100%;
-  max-width: 900px;
-}
-
-.info-section h2 {
-  font-size: 1.8em;
-  color: var(--whitesmoke);
-  margin-bottom: 15px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+.button-container {
+  display: flex;
+  justify-content: center;
 }
 
 button {
-  padding: 10px 20px;
-  border-radius: 5px;
-  background-color: var(--blue);
-  color: var(--whitesmoke);
-  font-size: 1em;
+  padding: 12px 30px;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  margin: 10px 0;
-  width: 200px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: var(--darkblue);
+  background-color: #45a049;
 }
 
-.info-container {
-  margin-top: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
+#location-info {
+  display: none;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9fafb;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-#footer {
-  height: 10rem;
-  color: var(--whitesmoke);
-  font-size: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+#coordinates,
+#aurora-status {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+footer {
+  background-color: #333;
+  color: whitesmoke;
   text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  border-top: 1px solid #444;
+  width: 100%;
   margin-top: auto;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
-#footer a {
-  color: var(--whitesmoke);
+footer a {
+  color: #66bb6a;
   text-decoration: none;
-  margin: 0 0.5rem;
 }
 
-#footer a:hover {
+footer a:hover {
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .header-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .search-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .search-box input,
-  .search-box button {
-    width: 90%;
-    margin-bottom: 10px;
-    padding: 12px;
-    font-size: 16px;
-  }
-
-  .search-box button {
-    background-color: var(--blue);
-    border: none;
-    color: var(--whitesmoke);
-    cursor: pointer;
-    width: 90%;
-  }
-
-  .search-box button:hover {
-    background-color: var(--darkblue);
-  }
-
-  section {
-    padding: 15px;
-    max-width: 90%;
-  }
-
-  .info-section {
-    max-width: 90%;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .search-box {
-    width: 100%;
-    padding: 0 20px;
-  }
-
-  .search-box input,
-  .search-box button {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 12px;
-    font-size: 16px;
-  }
-
-  .search-box button {
-    background-color: var(--blue);
-    border: none;
-    color: var(--whitesmoke);
-    cursor: pointer;
-    width: 100%;
-  }
-
-  .search-box button:hover {
-    background-color: var(--darkblue);
-  }
-
-  #footer {
-    font-size: 0.85rem;
+@media (max-width: 600px) {
+  body {
+    background-image: url(./assets/Aurora-Phone.jpg);
   }
 
   h1 {
-    font-size: 1.8em;
-    color: var(--whitesmoke);
+    font-size: 1.5rem;
   }
 
-  p {
-    font-size: 1em;
+  footer {
+    font-size: 14px;
   }
 
-  section {
-    padding: 10px;
-    max-width: 90%;
+  button {
+    width: 100%;
   }
 
-  .info-section {
-    max-width: 95%;
+  .container {
+    margin-bottom: 0;
   }
+
+  #aurora-info {
+    margin-top: 20px;
+  }
+}
+
+.button-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#aurora-info {
+  display: none;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9fafb;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+ul {
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+ul li {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+  color: #333;
 }
