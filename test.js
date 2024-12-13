@@ -49,30 +49,26 @@ async function fetchKpFromOption() {
 }
 const kpFromOptionData = await fetchKpFromOption();
 
-
-
-console.log(kpFromOptionData);
 const kp = document.getElementById("kp-verdier-24")
 
 function createKpList(){
-    for (let i = 0; i < Object.keys(kpFromOptionData).length; i++) {
+    for (let i = 0; i < 8; i++) {
         const kpVerdi24 = document.createElement("li")
         kpVerdi24.textContent = `${new Date().toLocaleDateString() + " Kp value is: " +kpFromOptionData.threeday.values[0][i].value}`
         kp.appendChild(kpVerdi24)
-        console.log(kpVerdi24);
-      
+         
     }
 }
 
 
-
 btn.addEventListener("click", ()=>{
+    kp.replaceChildren()
     createKpList();
 })
 
 
-menu.addEventListener("keydown", (e) => {
-    if(e.key === "Enter"){
-        document.getElementById("test").click()    
-    }
-})
+// menu.addEventListener("keydown", (e) => {
+//     if(e.key === "Enter"){
+//         document.getElementById("test").click()    
+//     }
+// })
