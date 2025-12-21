@@ -129,31 +129,22 @@ footer a:hover {
   #aurora-info {
     margin-top: 20px;
   }
-}
 
-.button-container {
-  width: 100%;
-  margin-bottom: 20px;
-}
+  h1 {
+    font-size: 1.8em;
+    color: var(--whitesmoke);
+  }
 
-#aurora-info {
-  display: none;
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f9fafb;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-ul {
-  font-size: 0.8rem;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-}
-ul li {
-  list-style-type: none;
-  padding: 0;
-  margin: 10px 0;
-  color: #333;
+  p {
+    font-size: 1em;
+  }
+
+  section {
+    padding: 10px;
+    max-width: 90%;
+  }
+
+  .info-section {
+    max-width: 95%;
+  }
 }
