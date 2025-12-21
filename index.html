@@ -5,94 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="script.js" defer></script>
-    <title>Aurora Location Data</title>
+    <title>Aurora Forecast</title>
   </head>
   <body>
-    <div class="button-container">
-      <button id="toggle-button">Show Aurora Info</button>
+    <div class="aurora-bg">
+      <div class="aurora-wave aurora-wave-1"></div>
+      <div class="aurora-wave aurora-wave-2"></div>
+      <div class="aurora-wave aurora-wave-3"></div>
     </div>
+    <div class="stars"></div>
 
-    <div class="container">
-      <h1>Aurora Location Finder</h1>
-      <select id="location-list"></select>
-      <button id="test">Fetch Aurora Data</button>
+    <div class="app">
+      <header>
+        <h1>Aurora</h1>
+        <p class="subtitle">Northern Lights Forecast</p>
+      </header>
 
-      <div id="location-info">
-        <h3>Location Information:</h3>
-        <p id="coordinates"></p>
-        <p id="aurora-status"></p>
-      </div>
+      <main>
+        <section class="search-section">
+          <div class="select-wrapper">
+            <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <select id="location-list">
+              <option value="" disabled selected>Select a location</option>
+            </select>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </div>
+          <button id="fetch-btn" class="primary-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v6l4 2"></path>
+            </svg>
+            <span>Check Aurora Activity</span>
+          </button>
+        </section>
 
-      <div id="kp-verdier"></div>
+        <section class="results-section" id="results-section">
+          <div class="result-card" id="location-card">
+            <div class="card-header">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <h3>Location</h3>
+            </div>
+            <p class="coordinates" id="coordinates">-</p>
+          </div>
 
-      <ul id="kp-verdier-24"></ul>
+          <div class="result-card kp-card" id="kp-card">
+            <div class="card-header">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+              <h3>Current Kp Index</h3>
+            </div>
+            <div class="kp-display">
+              <span class="kp-value" id="kp-value">-</span>
+              <span class="kp-status" id="kp-status">Waiting for data</span>
+            </div>
+            <div class="kp-meter">
+              <div class="kp-fill" id="kp-fill"></div>
+              <div class="kp-markers">
+                <span>0</span>
+                <span>3</span>
+                <span>6</span>
+                <span>9</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-card forecast-card" id="forecast-card">
+            <div class="card-header">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <h3>3-Day Forecast</h3>
+            </div>
+            <ul class="forecast-list" id="forecast-list"></ul>
+          </div>
+        </section>
+
+        <button class="info-toggle" id="info-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4M12 8h.01"></path>
+          </svg>
+          <span>Kp Index Guide</span>
+        </button>
+
+        <section class="info-section" id="info-section">
+          <div class="info-card">
+            <h3>Understanding the Kp Index</h3>
+            <p class="info-intro">The Kp index measures geomagnetic activity on a scale from 0 to 9. Higher values indicate stronger auroral activity and visibility at lower latitudes.</p>
+            <div class="kp-guide">
+              <div class="kp-level quiet">
+                <div class="level-header">
+                  <span class="level-badge">Kp 0-2</span>
+                  <span class="level-name">Quiet</span>
+                </div>
+                <p>Faint aurora visible in photographs, mostly near the Arctic Circle. Best viewed in northern Iceland, Norway, or Canada.</p>
+              </div>
+              <div class="kp-level unsettled">
+                <div class="level-header">
+                  <span class="level-badge">Kp 3-4</span>
+                  <span class="level-name">Active</span>
+                </div>
+                <p>Bright auroras visible to the naked eye. Green colors become obvious. Good displays at zenith in Nordic countries.</p>
+              </div>
+              <div class="kp-level storm">
+                <div class="level-header">
+                  <span class="level-badge">Kp 5-6</span>
+                  <span class="level-name">Storm</span>
+                </div>
+                <p>Vibrant, dynamic displays with multiple colors. Red and purple hues appear. Aurora coronae likely. Memorable experiences.</p>
+              </div>
+              <div class="kp-level severe">
+                <div class="level-header">
+                  <span class="level-badge">Kp 7-9</span>
+                  <span class="level-name">Severe Storm</span>
+                </div>
+                <p>Exceptional displays visible at mid-latitudes (40-50°). Intense colors, rapid movement. Rare and spectacular events.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          A collaborative project by
+          <a href="https://github.com/mrhl082024" target="_blank" rel="noopener">Lars Henrik</a>,
+          <a href="https://github.com/Hea092024" target="_blank" rel="noopener">Hector</a> &
+          <a href="https://github.com/nilshenrikelde" target="_blank" rel="noopener">Nils Henrik</a>
+        </p>
+        <p class="credit">Kodehode at JobLoop</p>
+      </footer>
     </div>
-
-    <div id="aurora-info" class="aurora-info">
-      <ul>
-        <li>
-          <strong>Kp 0</strong> – Quiet – Aurora oval mostly to the north of
-          Iceland. Faint aurorae visible in photographs, low in the northern
-          sky.
-        </li>
-        <li>
-          <strong>Kp 1</strong> – Quiet – Aurora oval over Iceland, faint and
-          quiet aurorae visible to the unaided eye low in the northern sky.
-        </li>
-        <li>
-          <strong>Kp 2</strong> – Quiet – Auroras readily visible and become
-          brighter and more dynamic.
-        </li>
-        <li>
-          <strong>Kp 3</strong> – Unsettled – Bright auroras visible at zenith.
-          Pale green colour more obvious.
-        </li>
-        <li>
-          <strong>Kp 4</strong> – Active – Bright, constant and dynamic northern
-          lights visible. More colours start to appear.
-        </li>
-        <li>
-          <strong>Kp 5</strong> – Minor storm – Bright, constant and colourful
-          aurora display, red and purple colours appear. Aurora coronae likely.
-        </li>
-        <li>
-          <strong>Kp 6</strong> – Moderate storm – Bright, dynamic and colourful
-          aurora display. Aurora coronae likely. Memorable to those who witness
-          them.
-        </li>
-        <li>
-          <strong>Kp 7</strong> – Strong storm – Bright, dynamic and colourful
-          aurorae. Visible in the southern sky. Aurora coronae very likely.
-        </li>
-        <li>
-          <strong>Kp 8</strong> – Severe storm – Bright, dynamic and colourful
-          aurorae. Aurora seen around 50° latitude.
-        </li>
-        <li>
-          <strong>Kp 9</strong> – Intense storm – Aurorae seen around 40°
-          latitude. Red aurorae and coronae very likely. Most often caused by
-          powerful coronal mass ejections.
-        </li>
-      </ul>
-    </div>
-
-    <footer id="footer">
-      <p>This is a group assignment at Kodehode by JobLoop</p>
-      <p>
-        Created by
-        <a href="https://github.com/mrhl082024" target="_blank">Lars Henrik</a>,
-        <a href="https://github.com/Hea092024" target="_blank">Hector</a>, and
-        <a href="https://github.com/nilshenrikelde" target="_blank"
-          >Nils Henrik</a
-        >
-      </p>
-      <p>Copyright &copy; 2024. All rights reserved.</p>
-    </footer>
   </body>
 </html>
