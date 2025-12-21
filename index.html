@@ -3,47 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-    <title>Aurora Project</title>
+    <script type="module" src="script.js" defer></script>
+    <title>Aurora Location Data</title>
   </head>
   <body>
-    <header>
-      <section class="main-content">
-        <h1>Welcome to Project Aurora</h1>
-        <p>Explore the beauty of the aurora borealis.</p>
-      </section>
-    </header>
-
-    <div class="header-content">
-      <div class="search-box">
-        <input id="city-input" type="text" placeholder="Search for location" />
-        <button id="search-btn">Search</button>
-      </div>
+    <div class="button-container">
+      <button id="toggle-button">Show Aurora Info</button>
     </div>
 
-    <section id="current-aurora" class="info-section">
-      <h2>Current Aurora Information</h2>
-      <div id="current-results" class="info-container">
-        <p>Results will appear here.</p>
-      </div>
-    </section>
+    <div class="container">
+      <h1>Aurora Location Finder</h1>
+      <select id="location-list"></select>
+      <button id="test">Fetch Aurora Data</button>
 
-    <section id="past-aurora" class="info-section">
-      <h2>Aurora in the Last 7 Days</h2>
-      <button id="past-btn">Check Past 7 Days</button>
-      <div id="past-results" class="info-container">
-        <p>Results will appear here.</p>
+      <div id="location-info">
+        <h3>Location Information:</h3>
+        <p id="coordinates"></p>
+        <p id="aurora-status"></p>
       </div>
-    </section>
 
-    <section id="future-aurora" class="info-section">
-      <h2>Aurora Forecast for the Next 24 Hours</h2>
-      <button id="future-btn">Check Next 24 Hours</button>
-      <div id="future-results" class="info-container">
-        <p>Results will appear here.</p>
-      </div>
-    </section>
+      <div id="kp-verdier"></div>
+
+      <ul id="kp-verdier-24"></ul>
+    </div>
+
+    <div id="aurora-info" class="aurora-info">
+      <ul>
+        <li>
+          <strong>Kp 0</strong> – Quiet – Aurora oval mostly to the north of
+          Iceland. Faint aurorae visible in photographs, low in the northern
+          sky.
+        </li>
+        <li>
+          <strong>Kp 1</strong> – Quiet – Aurora oval over Iceland, faint and
+          quiet aurorae visible to the unaided eye low in the northern sky.
+        </li>
+        <li>
+          <strong>Kp 2</strong> – Quiet – Auroras readily visible and become
+          brighter and more dynamic.
+        </li>
+        <li>
+          <strong>Kp 3</strong> – Unsettled – Bright auroras visible at zenith.
+          Pale green colour more obvious.
+        </li>
+        <li>
+          <strong>Kp 4</strong> – Active – Bright, constant and dynamic northern
+          lights visible. More colours start to appear.
+        </li>
+        <li>
+          <strong>Kp 5</strong> – Minor storm – Bright, constant and colourful
+          aurora display, red and purple colours appear. Aurora coronae likely.
+        </li>
+        <li>
+          <strong>Kp 6</strong> – Moderate storm – Bright, dynamic and colourful
+          aurora display. Aurora coronae likely. Memorable to those who witness
+          them.
+        </li>
+        <li>
+          <strong>Kp 7</strong> – Strong storm – Bright, dynamic and colourful
+          aurorae. Visible in the southern sky. Aurora coronae very likely.
+        </li>
+        <li>
+          <strong>Kp 8</strong> – Severe storm – Bright, dynamic and colourful
+          aurorae. Aurora seen around 50° latitude.
+        </li>
+        <li>
+          <strong>Kp 9</strong> – Intense storm – Aurorae seen around 40°
+          latitude. Red aurorae and coronae very likely. Most often caused by
+          powerful coronal mass ejections.
+        </li>
+      </ul>
+    </div>
 
     <footer id="footer">
       <p>This is a group assignment at Kodehode by JobLoop</p>
